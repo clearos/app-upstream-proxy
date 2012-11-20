@@ -1,7 +1,7 @@
 
 Name: app-upstream-proxy
 Epoch: 1
-Version: 1.4.3
+Version: 1.4.4
 Release: 1%{dist}
 Summary: Upstream Proxy
 License: GPLv3
@@ -37,7 +37,7 @@ cp -r * %{buildroot}/usr/clearos/apps/upstream_proxy/
 
 install -d -m 0755 %{buildroot}/var/clearos/events/upstream_proxy
 install -D -m 0644 packaging/filewatch-upstream-proxy-event.conf %{buildroot}/etc/clearsync.d/filewatch-upstream-proxy-event.conf
-install -D -m 0644 packaging/upstream_proxy.conf %{buildroot}/etc/clearos/upstream_proxy.conf
+install -D -m 0600 packaging/upstream_proxy.conf %{buildroot}/etc/clearos/upstream_proxy.conf
 
 %post
 logger -p local6.notice -t installer 'app-upstream-proxy - installing'
