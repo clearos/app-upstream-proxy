@@ -43,34 +43,41 @@ $this->lang->load('network');
 
 if ($form_type === 'edit') {
     $read_only = FALSE;
-    $buttons = array(
-        form_submit_update('submit'),
-        anchor_cancel('/app/upstream_proxy'),
-    );
+    if ($is_wizard) {
+        $buttons = array();
+    } else {
+        $buttons = array(
+            form_submit_update('submit'),
+            anchor_cancel('/app/upstream_proxy'),
+        );
+    }
 } else if ($form_type === 'add') {
     $read_only = FALSE;
     $buttons = array(
         form_submit_add('submit'),
         anchor_cancel('/app/upstream_proxy'),
     );
-} else  {
+} else {
     $read_only = TRUE;
     $buttons = array(
         anchor_edit('/app/upstream_proxy/edit'),
     );
 }
 
+if ($read_only)
+    $password = str_repeat('*', strlen($password));
+
 ///////////////////////////////////////////////////////////////////////////////
 // Form
 ///////////////////////////////////////////////////////////////////////////////
 
-echo form_open('upstream_proxy/edit');
+echo form_open('/upstream_proxy/edit', array('id' => 'proxy_form'));
 echo form_header(lang('base_settings'));
 
 echo field_input('server', $server, lang('network_proxy_server'), $read_only);
 echo field_input('port', $port, lang('network_port'), $read_only);
 echo field_input('username', $username, lang('base_username'), $read_only);
-echo field_input('password', $password, lang('base_password'), $read_only);
+echo field_password('password', $password, lang('base_password'), $read_only);
 
 echo field_button_set($buttons);
 

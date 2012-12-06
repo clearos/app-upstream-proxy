@@ -273,15 +273,19 @@ class Proxy extends Engine
 
         $server = $this->config['server'] . ':' . $this->config['port'] ;
 
-        if (!empty($username))
-            $server = $username . ':' . $password . '@' . $server;
+        if (!empty($this->config['username']))
+            $server = $this->config['username'] . ':' . $this->config['password'] . '@' . $server;
 
         $contents = "export ftp_proxy=\"http://$server\"\n";
         $contents .= "export http_proxy=\"http://$server\"\n";
         $contents .= "export https_proxy=\"http://$server\"\n";
 
-        if ($file->exists())
-            $file->delete();
+        try {
+            if ($file->exists())
+                $file->delete();
+        } catch (Exception $e) {
+            // Keep going
+        }
 
         $file->create('root', 'root', '0640');
         $file->add_lines($contents);

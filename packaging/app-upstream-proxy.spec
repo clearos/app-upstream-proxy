@@ -19,6 +19,7 @@ Summary: Upstream Proxy - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
+Requires: app-base >= 1:1.4.7
 Requires: app-network-core
 Requires: app-events-core
 

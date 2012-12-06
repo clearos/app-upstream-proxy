@@ -30,7 +30,7 @@ $app['controllers']['upstream_proxy']['title'] = lang('upstream_proxy_app_name')
 $app['controllers']['upstream_proxy']['wizard_name'] = lang('upstream_proxy_app_name');
 $app['controllers']['upstream_proxy']['wizard_description'] = lang('upstream_proxy_wizard_description');
 $app['controllers']['upstream_proxy']['inline_help'] = array(
-    lang('upstream_proxy_proxy_settings') => lang('upstream_proxy_inline_help'),
+    lang('base_tooltip') => lang('upstream_proxy_inline_help'),
 );
 
 /////////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,7 @@ $app['controllers']['upstream_proxy']['inline_help'] = array(
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
+    'app-base >= 1:1.4.7',
     'app-network-core',
     'app-events-core',
 );

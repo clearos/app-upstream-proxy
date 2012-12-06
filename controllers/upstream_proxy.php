@@ -112,7 +112,7 @@ class Upstream_Proxy extends ClearOS_Controller
         // Handle form submit
         //-------------------
 
-        if (($this->input->post('submit') && $form_ok)) {
+        if (($this->input->server('REQUEST_METHOD') === 'POST') && $form_ok) {
             try {
                 $this->proxy->set_server($this->input->post('server'));
                 $this->proxy->set_port($this->input->post('port'));
@@ -121,9 +121,11 @@ class Upstream_Proxy extends ClearOS_Controller
                 $this->proxy->write_profile();
 
                 $this->page->set_status_updated();
-                // FIXME
-                // redirect($this->session->userdata('wizard_redirect'));
-                redirect('/upstream_proxy');
+
+                if ($this->session->userdata('wizard_redirect'))
+                    redirect($this->session->userdata('wizard_redirect'));
+                else
+                    redirect('/upstream_proxy');
             } catch (Engine_Exception $e) {
                 $this->page->view_exception($e->get_message());
                 return;
@@ -139,6 +141,8 @@ class Upstream_Proxy extends ClearOS_Controller
             $data['port'] = $this->proxy->get_port();
             $data['username'] = $this->proxy->get_username();
             $data['password'] = $this->proxy->get_password();
+
+            $data['is_wizard'] = ($this->session->userdata('wizard')) ? TRUE : FALSE;
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;
