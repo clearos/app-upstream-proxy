@@ -271,6 +271,19 @@ class Proxy extends Engine
 
         $file = new File(self::FILE_PROFILE);
 
+        // Delete proxy settings if server not defined
+        //--------------------------------------------
+
+        if (empty($this->config['server'])) {
+            if ($file->exists())
+                $file->delete();
+
+            return;
+        }
+
+        // Write out proxy settings
+        //-------------------------
+
         $server = $this->config['server'] . ':' . $this->config['port'] ;
 
         if (!empty($this->config['username']))
