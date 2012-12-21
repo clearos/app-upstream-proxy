@@ -1,7 +1,7 @@
 
 Name: app-upstream-proxy
 Epoch: 1
-Version: 1.4.7.1
+Version: 1.4.10
 Release: 1%{dist}
 Summary: Upstream Proxy
 License: GPLv3
