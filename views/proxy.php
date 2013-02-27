@@ -71,7 +71,7 @@ if ($read_only)
 // Form
 ///////////////////////////////////////////////////////////////////////////////
 
-echo form_open('/upstream_proxy/edit', array('id' => 'proxy_form'));
+echo form_open('/upstream_proxy/edit', array('id' => 'proxy_form', 'autocomplete' => 'off'));
 echo form_header(lang('base_settings'));
 
 echo field_input('server', $server, lang('network_proxy_server'), $read_only);
