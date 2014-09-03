@@ -1,7 +1,7 @@
 
 Name: app-upstream-proxy
 Epoch: 1
-Version: 1.4.20
+Version: 1.6.5
 Release: 1%{dist}
 Summary: Upstream Proxy
 License: GPLv3
@@ -76,7 +76,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/upstream_proxy/packaging
-%exclude /usr/clearos/apps/upstream_proxy/tests
 %dir /usr/clearos/apps/upstream_proxy
 %dir /var/clearos/events/upstream_proxy
 /usr/clearos/apps/upstream_proxy/deploy
