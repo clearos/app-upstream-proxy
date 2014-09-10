@@ -43,14 +43,10 @@ $this->lang->load('network');
 
 if ($form_type === 'edit') {
     $read_only = FALSE;
-    if ($is_wizard) {
-        $buttons = array();
-    } else {
-        $buttons = array(
-            form_submit_update('submit'),
-            anchor_cancel('/app/upstream_proxy'),
-        );
-    }
+    $buttons = array(
+        form_submit_update('submit'),
+        anchor_cancel('/app/upstream_proxy'),
+    );
 } else if ($form_type === 'add') {
     $read_only = FALSE;
     $buttons = array(
@@ -59,9 +55,16 @@ if ($form_type === 'edit') {
     );
 } else {
     $read_only = TRUE;
-    $buttons = array(
-        anchor_edit('/app/upstream_proxy/edit'),
-    );
+    if ($is_wizard) {
+        $buttons = array(
+            anchor_custom('#', lang('base_skip'), 'high', array('id' => 'wizard_skip')),
+            anchor_custom('/app/upstream_proxy/edit', lang('upstream_proxy_configure_proxy'), 'low')
+        );
+    } else {
+        $buttons = array(
+            anchor_edit('/app/upstream_proxy/edit'),
+        );
+    }
 }
 
 if ($read_only)

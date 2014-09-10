@@ -45,12 +45,11 @@ header('Content-Type:application/x-javascript');
 
 $(document).ready(function() {
 
-    // Wizard next button handling
+    // Wizard skip button handling
     //----------------------------
 
-    $("#wizard_nav_next").click(function(){
-        $('form#proxy_form').submit();
-    });
+    $("#wizard_skip").attr('href', $('#wizard_nav_next').attr('href'));
+
 });
 
 // vim: ts=4 syntax=javascript
