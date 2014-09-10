@@ -45,10 +45,10 @@ header('Content-Type:application/x-javascript');
 
 $(document).ready(function() {
 
-    // Wizard skip button handling
-    //----------------------------
+    // Wizard button handling
+    //-----------------------
 
-    $("#wizard_skip").attr('href', $('#wizard_nav_next').attr('href'));
+    $("#wizard_continue").attr('href', $('#wizard_nav_next').attr('href'));
 
 });
 

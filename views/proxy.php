@@ -57,7 +57,7 @@ if ($form_type === 'edit') {
     $read_only = TRUE;
     if ($is_wizard) {
         $buttons = array(
-            anchor_custom('#', lang('base_skip'), 'high', array('id' => 'wizard_skip')),
+            anchor_custom('#', (isset($server) ? lang('base_skip') : lang('base_continue')), 'high', array('id' => 'wizard_continue')),
             anchor_custom('/app/upstream_proxy/edit', lang('upstream_proxy_configure_proxy'), 'low')
         );
     } else {
