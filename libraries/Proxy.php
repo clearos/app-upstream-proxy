@@ -403,7 +403,8 @@ class Proxy extends Engine
 
         try {
             $lines = array();
-            $lines = $file->get_contents_as_array();
+            if ($file->exists())
+                $lines = $file->get_contents_as_array();
         } catch (File_Not_Found_Exception $e) {
         } catch (File_No_Match_Exception $e) {
         }
